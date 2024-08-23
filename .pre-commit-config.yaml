@@ -1,0 +1,54 @@
+# Copyright (c) 2024 James Strudwick
+#
+# This software is released under the MIT License.
+# https://opensource.org/licenses/MIT
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: check-ast
+      - id: check-docstring-first
+      - id: check-executables-have-shebangs
+      - id: check-json
+      - id: check-yaml
+      - id: check-toml
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+      - id: mixed-line-ending
+      - id: name-tests-test
+        args: [--pytest-test-first]
+      - id: pretty-format-json
+        args: [--autofix]
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.6.1
+    hooks:
+      - id: ruff
+        args: [--fix]
+      - id: ruff-format
+  - repo: https://github.com/shellcheck-py/shellcheck-py
+    rev: v0.10.0.1
+    hooks:
+      - id: shellcheck
+  - repo: https://github.com/pycqa/pydocstyle
+    rev: 6.3.0
+    hooks:
+      - id: pydocstyle
+        # args: [--ignore=D107, D204, D202,] #TODO: look into how to make this work
+  - repo: local
+    hooks:
+      - id: pdoc
+        name: pdoc
+        language: system
+        pass_filenames: false
+        entry: poetry run pdoc --html -f hurwitzians -o docs
+# TODO: Include when/if hook is extended to check .toml files
+# - repo: https://github.com/pivotal/LicenseFinder
+#   rev: v7.1.0
+#   hooks:
+#     - id: license-finder
+# - repo: https://github.com/PyCQA/bandit
+#   rev: "1.7.9"
+#   hooks:
+#     - id: bandit
+#       args: ["--exclude", "tests"]

@@ -1,0 +1,35 @@
+name: Tag & Release
+
+on:
+  push:
+    branches: [ "main" ]
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.x'
+    - name: Install dependencies
+      run: |
+        pip install --upgrade pip
+        pip install poetry
+        poetry -V
+        poetry config virtualenvs.in-project true
+    - name: Create tag & release
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        tag="v$(echo "$(poetry version)" | cut -d' ' -f2)"
+        gh release create "$tag" \
+        --repo="$GITHUB_REPOSITORY" \
+        --title="${tag#v}" \
+        --generate-notes

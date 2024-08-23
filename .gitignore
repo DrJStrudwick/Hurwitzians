@@ -1,0 +1,4 @@
+playground.ipynb
+poetry.lock
+*.pyc
+.coverage

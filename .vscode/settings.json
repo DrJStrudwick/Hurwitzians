@@ -1,0 +1,18 @@
+{
+  "cSpell.words": [
+    "hurwitzians"
+  ],
+  "licenser.excludeFileExtensions": [
+    "ipynb",
+    "json",
+    "csv",
+    "yaml"
+  ],
+  "markdownlint.config": {
+    "MD024": {
+      "siblings_only": true
+    }
+  },
+  "python.testing.pytestEnabled": true,
+  "python.testing.unittestEnabled": false
+}

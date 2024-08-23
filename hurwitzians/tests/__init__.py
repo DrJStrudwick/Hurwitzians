@@ -2,4 +2,4 @@
 #
 # This software is released under the MIT License.
 # https://opensource.org/licenses/MIT
-"""Module for hurwitzians."""
+"""Module for testing the hurwitzians."""
