@@ -14,7 +14,9 @@ and this project adheres to [Semantic Versioning].
 
 ## [Unreleased]
 
-- /
+### Fixed
+
+- Fixed `.readthedocs.yaml`
 
 ## [0.0.1] - 2024-08-21
 
